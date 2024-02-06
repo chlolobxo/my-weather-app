@@ -1,8 +1,8 @@
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temperature-value");
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#current-city");
-  cityElement.innerHTML = response.data.name;
+  cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = temperature;
 }
 
@@ -12,7 +12,7 @@ function search(event) {
   let city = searchInputElement.value;
 
   let apiKey = "3cob132dc3daat1dec233c5354fa90b7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
 }
